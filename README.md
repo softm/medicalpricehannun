@@ -1,4 +1,4 @@
-# 약값·비급여 진료비 한눈 (medicalpricehannun)
+# 진료비한눈 (medicalpricehannun)
 
 건강보험심사평가원 공개 의료기관 정보와 비급여 가격을 지도에서 비교하기 위한 웹앱입니다.
 
