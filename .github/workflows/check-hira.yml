@@ -1,0 +1,23 @@
+name: Check HIRA API
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify HIRA API connectivity
+        env:
+          HIRA_API_KEY: ${{ secrets.HIRA_API_KEY }}
+        run: python3 scripts/check_hira.py
+      - name: Upload diagnostic report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hira-api-check
+          path: reports/hira-check.json
+          if-no-files-found: ignore
+          retention-days: 1
